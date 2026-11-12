@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 DEFAULT_DATE = "2013-01-10"
 NCLT_HOSTS = [
-    "https://s3.us-east-2.amazonaws.com/nclt.perl.engin.umich.edu/sensor_data",
+    "https://s3.us-east-2.amazonaws.comg/nclt.perl.engin.umich.edu/sensor_data",
 ]
 ARCHIVE_TEMPLATE = "{date}_sen.tar.gz"
 REQUIRED_CSV = Path("sen") / "ms25.csv"
