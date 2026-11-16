@@ -145,6 +145,26 @@ def main() -> int:
     else:
         print(f"[i] Ground Truth уже существует: {gt_file}")
 
+
+
+
+
+
+    # --- БЛОК ТИМОФЕЯ (Одометрия) ---
+    # Оригинальная ссылка ребят на Ground Truth может выдавать 403 (Forbidden) 
+    # от Amazon S3. Этот блок скачает его по правильному адресу для нашей части.
+    if not gt_file.exists():
+        correct_gt_url = f"https://s3.us-east-2.amazonaws.com/nclt.perl.engin.umich.edu/ground_truth/groundtruth_{args.date}.csv"
+        print(f"[i] Скачивание Ground Truth (правильный путь): {correct_gt_url}")
+        try:
+            req = urllib.request.Request(correct_gt_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req) as response, open(gt_file, 'wb') as out_file:
+                out_file.write(response.read())
+            print(f"[+] Ground Truth сохранен: {gt_file}")
+        except Exception as e:
+            print(f"[!] Не удалось скачать Ground Truth: {e}")
+    # ---------------------------------
+
     print("[+] Готово. Данные готовы к анализу.")
     return 0
 
