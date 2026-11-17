@@ -4,7 +4,7 @@
 в папку data/ и проверяет наличие файла sen/ms25.csv (сырые данные IMU).
 Если скачивание невозможно, выводится инструкция для ручного скачивания.
 """
-
+ #nt
 from __future__ import annotations
 
 import argparse
